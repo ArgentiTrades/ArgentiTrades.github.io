@@ -1,0 +1,116 @@
+@import url('fonts-and-variables.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: MinecraftRegular;
+}
+header {
+    text-align: center;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+    align-content: center;
+    background-image: url('website_images/dirt.jpg');
+    color: #50C878;
+}
+h1 > span {
+    color: red;
+}
+h1 {
+    flex: 1 100%;
+    font-size: 3rem;
+}
+h3 {
+    font-family: MinecraftRegular;
+}
+body {
+    background-image: url('website_images/website-background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.building {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 300px;
+    padding-bottom: 150px;
+    
+}
+a {
+    text-decoration: none;
+}
+.floor {
+    color: white;
+    text-align: center;
+    display: flex;
+    height: calc(96px * 2);
+    width: calc(368px * 2);
+    background-position: center;
+}
+.floor > h2 {
+    margin: auto;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+}
+.trading-floor {
+    background-image: url('website_images/computer-trading-floor.png');
+}
+.bottom {
+    background-image: url('website_images/computer-bottom-floor.png');
+}
+.floor:hover, .floor:focus{
+    filter: brightness(120%);
+}
+.floor:hover h2, .floor:hover h2 {
+    background-color: black;
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        flex: 1 100%;
+        font-family: MinecraftRegular;
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 0.7rem;
+    }
+    .floor {
+        height: calc(96px * 1);
+        width: calc(368px * 1);
+    }
+    .floor > h2 {
+        margin: auto;
+        padding: 20px;
+        font-size:1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        
+    }
+    .trading-floor {
+        background-image: url('website_images/phone-trading-floor.png');
+    }
+    .bottom {
+        background-image: url('website_images/phone-bottom-floor.png');
+    }
+}
+
+@media screen and (max-width: 360px) {
+    h1 {
+        flex: 1 100%;
+        font-family: MinecraftRegular;
+        font-size: 1.7rem;
+    }
+    h3 {
+        font-size: 0.7rem;
+    }
+    .floor {
+        height: calc(96px * 0.5);
+        width: calc(368px * 0.5);
+    }
+}

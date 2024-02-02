@@ -1,0 +1,21 @@
+:root {
+    font-size: 20px;
+    --rounding: 30px;
+}
+
+@font-face {
+    font-family: MinecraftRegular;
+    src: url('minecraft_font/MinecraftRegular-Bmg3.otf');
+}
+@font-face {
+    font-family: MinecraftItalic;
+    src: url('minecraft_font/MinecraftItalic-R8Mo.otf');
+}
+@font-face {
+    font-family: MinecraftBold;
+    src: url('minecraft_font/MinecraftBold-nMK1.otf');
+}
+@font-face {
+    font-family: MinecraftBoldItalic;
+    src: url('minecraft_font/MinecraftBoldItalic-1y1e.otf');
+}

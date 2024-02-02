@@ -1,0 +1,65 @@
+@import url('../fonts-and-variables.css');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: MinecraftRegular;
+}
+body {
+    min-height: 100vh;
+    background-image: url('../website_images/first-floor-wall.png');
+    display: flex;
+    justify-content: center;
+}
+article {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background-color: rgba(200, 200, 200, 0.5);
+    padding: 50px;
+    margin: 50px;
+    border-radius: var(--rounding);
+}
+article  h1 {
+    font-size: 2.5rem;
+}
+table {
+    margin: 50px;
+    background-color: rgba(20, 20, 20, 0.3);
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+td {
+    padding: 10px;
+    border: 1px solid white;
+}
+tr {
+    border: 1px solid white;
+}
+.updates {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    background-color: rgba(20, 20, 20, 0.3);
+    border-radius: var(--rounding);
+}
+.updates > ul {
+    padding: 20px;
+}
+a {
+    text-decoration: none;
+    color: black;
+    align-self: flex-start;
+    background-color: rgba(20, 20, 20, 0.3);
+    padding: 20px 40px;
+    border-radius: var(--rounding);
+    transition: all 600ms ease-in-out;
+}
+a:hover {
+    background-color: rgba(20, 20, 20, 0.5);
+    padding: 20px 60px;
+    transition: all 300ms;
+}

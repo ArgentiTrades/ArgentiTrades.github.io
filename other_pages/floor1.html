@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor 1</title>
+    <link rel="stylesheet" href="trading-floor-styles.css">
+    <script src="../trades.js"></script>
+    <script src="../item_imgs/item-img-paths.js"></script>
+</head>
+<body>
+    <a href="../index.html">Back</a>
+    <div class="floor">
+        <div class="big-room">Librarian</div>
+        <div class="big-room">Librarian</div>
+        <div class="room">Weapon Smith</div>
+        <div class="room">Armourer</div>
+        <div class="room">Farmer</div>
+        <div class="room">Cartographer</div>
+        <div class="room">Armourer</div>
+        <div class="room">Fletcher</div>
+    </div>
+    <div id="popup-overlay">
+        <p id="close">x</p>
+        <div id="overlay">
+            <img src="" alt="" id="overlayImg">
+            <div id="trades">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const floor = 0
+    const allRooms = document.querySelectorAll('.big-room, .room')
+    const closeButton = document.getElementById('close')
+    const overlay = document.getElementById('popup-overlay')
+    const tradeInv = document.getElementById('trades')
+    const villagerImg = document.getElementById('overlayImg')
+    let roomArray = []
+
+    function fillTrades(floor, villagerRoom) {
+        wantedRoom = trades[floor][villagerRoom]
+        numOfTrades = wantedRoom.numtrades
+        villagerImg.alt = wantedRoom.job
+        for (let i = 0; i < numOfTrades; i++) {
+            var trade = document.createElement('div')
+            trade.setAttribute('id', 'trade')
+            tradeInv.appendChild(trade)
+
+            let leftItem = wantedRoom.listtrades[i][0][0]
+            let leftItemImgPath = tradeImg[leftItem]
+            let leftNumItems = wantedRoom.listtrades[i][0][1]
+            let leftItem2 = ''
+            let leftItem2ImgPath = ''
+            let leftNumItems2 = ''
+
+            if (leftItem.includes('-')) {
+                leftItem2 = leftItem.slice(leftItem.indexOf('-') + 1)
+                leftItem = leftItem.slice(0, leftItem.indexOf('-'))
+
+                leftItem2ImgPath = tradeImg[leftItem2]
+                leftItemImgPath = tradeImg[leftItem]
+            }
+            if ( isNaN(leftNumItems) && leftNumItems.includes('-')) {
+                leftNumItems2 = (leftNumItems.slice(leftNumItems.indexOf('-') + 1)) * 1
+                leftNumItems = (leftNumItems.slice(0, leftNumItems.indexOf('-'))) * 1
+            }
+
+            var left = document.createElement('div')
+            var leftImg = document.createElement('img')
+            var leftText = document.createElement('div')
+            var left2 = document.createElement('div')
+            var leftImg2 = document.createElement('img')
+            var left2Text = document.createElement('div')
+
+            left.className = 'left'
+            left2.className = 'left'
+            leftImg.src = '../item_imgs/' + leftItemImgPath
+            leftText.innerHTML = leftNumItems
+
+            left.appendChild(leftImg)
+            left.appendChild(leftText)
+
+            if (leftItem2) {
+                leftImg2.src = '../item_imgs/' + leftItem2ImgPath
+                left2Text.innerHTML = leftNumItems2
+
+                left2.appendChild(leftImg2)
+                left2.appendChild(left2Text)
+            }
+
+            trade.appendChild(left)
+            if (leftItem2) {
+                trade.appendChild(left2)
+            }
+
+            
+            let rightItem = wantedRoom.listtrades[i][1][0]
+            let rightItemImgPath = tradeImg[rightItem]
+            let rightNumItems = wantedRoom.listtrades[i][1][1]
+            let rightAltName = ''
+
+            if (rightItem.includes('/')) {
+                rightAltName = rightItem.slice(rightItem.indexOf('/') + 1)
+                rightItem = rightItem.slice(0, rightItem.indexOf('/'))
+                rightItemImgPath = tradeImg[rightItem]
+            }
+
+            var right = document.createElement('div')
+            var rightImg = document.createElement('img')
+            var rightText = document.createElement('div')
+
+            right.className = 'right'
+            rightImg.src = '../item_imgs/' + rightItemImgPath
+            rightText.innerHTML = rightNumItems
+
+            right.appendChild(rightImg)
+            right.appendChild(rightText)
+
+            
+            
+            trade.appendChild(right)
+            // trade.appendChild(tradeWrapper3)
+        }
+    }
+
+    closeButton.onclick = function() {
+        overlay.style.display = 'none'
+        let child = tradeInv.lastElementChild;
+        while (child) {
+            tradeInv.removeChild(child);
+            child = tradeInv.lastElementChild;
+        }
+    }
+    allRooms.forEach(room => {
+        roomArray.push(room)
+        room.onclick = function() {
+            villRoom = roomArray.indexOf(room)
+            fillTrades(0, villRoom)
+            overlay.style.display = 'block'
+        }
+    });
+</script>
